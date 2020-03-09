@@ -1,24 +1,30 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
-function App() {
+function HelloWorld() {
+  return <div id="hello">Hello world!</div>;
+}
+
+const App = () => (
+  <div>
+    This is my compoent: <HelloWorld />
+  </div>
+);
+
+class App2 extends React.Component {
+  render() {
+    return (
+      <div>
+        This is my compoent: <HelloWorld />
+      </div>
+    );
+  }
+}
+
+function App3() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit COeMEMELA <code> src / App.js </code> and save to reload.{" "}
-        </p>{" "}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React{" "}
-        </a>{" "}
-      </header>{" "}
+    <div>
+      This is my component: <HelloWorld />
     </div>
   );
 }
