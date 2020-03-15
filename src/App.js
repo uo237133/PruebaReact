@@ -1,30 +1,52 @@
 import React from "react";
 import "./App.css";
 
-function HelloWorld() {
-  return <div id="hello">Hello world!</div>;
-}
+// function HelloWorld(props) {
+//   return (
+//     <div id="hello">
+//       <h3>{props.subtitle}</h3>
+//       {props.myText}
+//       <hr></hr>
+//     </div>
+//   );
+// }
 
-const App = () => (
-  <div>
-    This is my compoent: <HelloWorld />
-  </div>
-);
+class HelloWorld extends React.Component {
+  state = {
+    show: true
+  };
 
-class App2 extends React.Component {
+  cambiar = () => {
+    this.setState({ show: !this.state.show });
+  };
+
   render() {
-    return (
-      <div>
-        This is my compoent: <HelloWorld />
-      </div>
-    );
+    if (this.state.show) {
+      return (
+        <div id="hello">
+          <h3>{this.props.myText}</h3>
+          {this.props.subtitle}
+          <button onClick={this.cambiar}>Ocultar</button>
+          <hr></hr>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h1>No hay elementos</h1>
+          <button onClick={this.cambiar}>Mostrar</button>
+        </div>
+      );
+    }
   }
 }
 
-function App3() {
+function App() {
   return (
     <div>
-      This is my component: <HelloWorld />
+      This is my component:
+      <HelloWorld myText="Hello word" subtitle="loremp ipsum" />
+      <HelloWorld myText="hola mundo" />
     </div>
   );
 }
