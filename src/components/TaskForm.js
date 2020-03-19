@@ -6,7 +6,7 @@ export default class TaskForm extends Component {
     description: ""
   };
   cuandoSubmit = e => {
-    console.log(this.state);
+    this.props.addTarea(this.state.title, this.state.description);
     e.preventDefault();
   };
   cuandoChange = e => {
