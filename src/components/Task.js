@@ -13,15 +13,19 @@ class Task extends React.Component {
 
   render() {
     const { tarea } = this.props;
-    //Forma 3:const colorRed = { background: "red" };
     return (
-      // Forma 1: <div className="red"
-      // Forma 2: <div>style={{ background: "red" }}>
-      // Forma 3: <div style={colorRed}>
       <div style={this.styleCompleted()}>
         {tarea.title} - {tarea.description} - {tarea.done} - {tarea.id}
-        <input type="checkbox" />
-        <button style={btnDelete}>x</button>
+        <input
+          type="checkbox"
+          onChange={this.props.updateTarea.bind(this, tarea.id)}
+        />
+        <button
+          style={btnDelete}
+          onClick={this.props.deleteTarea.bind(this, tarea.id)}
+        >
+          x
+        </button>
       </div>
     );
   }
