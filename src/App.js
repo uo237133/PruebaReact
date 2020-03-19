@@ -1,6 +1,9 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import archivoTareas from "./archivos/archivoTareas.json";
+
+// Componentes
 import Tasks from "./components/Tasks";
 import TaskForm from "./components/TaskForm";
 import Posts from "./components/Posts";
@@ -38,13 +41,28 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <TaskForm addTarea={this.addTarea} />
-        <Tasks
-          tareas={this.state.tareas}
-          deleteTarea={this.deleteTarea}
-          updateTarea={this.updateTarea}
-        />
-        <Posts />
+        <Router>
+          <Link to="/">Home</Link>
+          <br />
+          <Link to="/posts">Posts</Link>
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return (
+                <div>
+                  <TaskForm addTarea={this.addTarea} />
+                  <Tasks
+                    tareas={this.state.tareas}
+                    deleteTarea={this.deleteTarea}
+                    updateTarea={this.updateTarea}
+                  />
+                </div>
+              );
+            }}
+          ></Route>
+          <Route path="/posts" component={Posts}></Route>
+        </Router>
       </div>
     );
   }
